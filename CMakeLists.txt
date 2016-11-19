@@ -1,5 +1,6 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(rossintro)
+add_definitions(-std=c++11 -Wall -g)
 
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
@@ -127,16 +128,21 @@ include_directories(
 
 ## Declare a C++ executable
 add_executable(rossintro_node src/test_node.cpp)
+add_executable(test_publisher_node src/test_publisher.cpp)
 
 ##Add cmake target dependencies of the executable
 ## same as for the library above
 add_dependencies(rossintro_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+add_dependencies(test_publisher_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+
 
 ## Specify libraries to link a library or executable target against
 target_link_libraries(rossintro_node
  ${catkin_LIBRARIES}
  )
-
+target_link_libraries(test_publisher_node
+  ${catkin_LIBRARIES}
+  )
 #############
 ## Install ##
 #############
